@@ -4,12 +4,11 @@
 PORT=/dev/ttyUSB0
 
 # baudrate
-BAUD=115200
+BAUD=$(shell stty < ${PORT} speed)
 
 # path to the MicroPython firmware bin
 FIRMWARE=${MP_FW} 
 ####
-
 
 erase_device:
 	esptool.py -p ${PORT} -b ${BAUD} erase_flash
