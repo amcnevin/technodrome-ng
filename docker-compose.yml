@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+
+  broker:
+    image: eclipse-mosquitto:1.6.10 #2.0.10
+    container_name: broker
+    volumes:
+      - "./config/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf"
+    ports:
+      - 1883:1883
+      - 9001:9001
+
+volumes:
+  broker:
+    driver: local
